@@ -1,0 +1,22 @@
+#! /bin/sh
+
+PROVERBS=(
+  "After three days without reading, talk becomes flavorless."
+  "A book is like a garden carried in the pocket."
+  "A closed mind is like a closed book; just a block of wood."
+  "It's better to be without a book than to believe a book entirely."
+  "A single conversation with a wise man is worth a month’s study of books."
+  "A jade stone is useless before it is processed; a man is good for nothing until he is educated."
+  "Learning is a weightless treasure you can always carry easily."
+  "Teachers open the door. You enter by yourself."
+  "True knowledge is when one knows the limitations of one’s knowledge."
+  "One cannot refuse to eat just because there is a chance of being choked."
+  "Clear conscience never fears midnight knocking"
+  "You won't help shoots grow by pulling them up higher."
+  "A dish of carrot hastily cooked may still have soil uncleaned off the vegetable."
+  "A journey of a thousand miles begins with a single step."
+  "Patience is a bitter plant, but its fruit is sweet."
+  "If you are patient in one moment of anger, you will escape a hundred days of sorrow."
+)
+
+echo -e "\033[38;5;217m${PROVERBS[$$$(date +%s) % ${#PROVERBS[@]} ]}"

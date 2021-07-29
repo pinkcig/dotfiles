@@ -1,0 +1,32 @@
+#!/bin/sh
+
+urls="femboy.tech,thigh.pictures,nut-in.me,i-masturbate-to.men,i-use-arch-b.tw"
+
+# Remember to URL Encode the strings
+description="dapper%20image%20host%20so%20cool%20%F0%9F%98%8E"
+text="%5BUPLOAD_NAME%5D.%5BUPLOAD_EXTENSION%5D%20%E2%80%A2%20%5BUPLOAD_SIZE%5D"
+colour="%232F3136" # HEX
+url_len="8"
+
+url="https://thigh.pictures/upload?random=$urls&onlyURL=yes&encryption=yes&nameLength=$url_len&embed=yes&embedColor=$colour&embedDescription=$description&embedText=$text"
+key=""
+
+tmp_file="/tmp/screenshot.png"
+
+flameshot gui -r > $tmp_file
+
+$tmp_file="$(convert $tmp_file \( +clone -background "#2F3136" -shadow 65x10+0+0+0 \) +swap -bordercolor none -border 0 -background "#00000000" -layers merge +repage $tmp_file)"
+
+echo "$tmpfile"
+
+if [[ $(file --mime-type -b $tmp_file) != "image/png" ]]; then
+        rm $file
+        notify-send "Flameshot ded." -a "Flameshot" && exit 1
+fi
+
+image=$(curl -X POST -F "file=@$tmp_file" -H "Authorization:$key" -H "Content-Type:multipart/form-data" $url)
+echo "$image ​" | xclip -selection clipboard
+
+notify-send "$image" -a "Flameshot" -i $tmp_file
+
+rm $tmp_file

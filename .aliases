@@ -1,0 +1,77 @@
+#!/bin/sh
+
+# alias x=''
+
+# General utilities to make my life easier
+alias c='clear'
+alias y='yarn'
+alias _='sudo'
+alias daddy='sudo'
+alias mkdir='mkdir -pv'
+alias mkcd="mkdir $1 && cd $1"
+alias ping='ping -c 5'
+alias yst="yarn run start"
+
+
+# Replacing cat to bat
+alias cat='bat'
+
+# Replacing ls to exa
+alias ls='exa -l --color=always --group-directories-first'
+alias ll='exa -a --color=always --group-directories-first'
+alias lt='exa -aT --color=always --group-directories-first'
+
+# Replacing AUR Helpers to paru
+alias yay='paru'
+alias trizen='paru'
+
+# Flags
+alias df='df -h'
+alias free='free -m'
+alias wget='wget -c'
+
+# Security
+alias rm='rm -I --preserve-root'
+alias cp='cp -L'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias chgrp='chgrp --preserve-root'
+
+# Grepp
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+cleanup() {
+        sudo pacman -Scc
+        sudo pacman -Rns $(pacman -Qtdq)
+        sudo rm -rf ~/.cache/*
+        sudo journalctl --vacuum-size=50M
+}
+
+loc() {
+  local total
+  local firstletter
+  local ext
+  local lines
+  total=0
+  for ext in $@; do
+    firstletter=$(echo $ext | cut -c1-1)
+    if [[ firstletter != "." ]]; then
+      ext=".$ext"
+    fi
+    lines=`find-exec "*$ext" cat | wc -l`
+    lines=${lines// /}
+    total=$(($total + $lines))
+    echo "Lines of code for ${fg[blue]}$ext${reset_color}: ${fg[green]}$lines${reset_color}"
+  done
+  echo "${fg[blue]}Total${reset_color} lines of code: ${fg[green]}$total${reset_color}"
+}
+
+topcmd() {
+  history | awk 'BEGIN {FS="[ \t]+|\\|"} {print $3}' | sort | uniq -c | sort -nr | head -n $1
+}
+
+function find-exec() {
+  find . -type f -iname "*${1:-}*" -exec "${2:-file}" '{}' \;
+}

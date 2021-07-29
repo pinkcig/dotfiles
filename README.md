@@ -1,6 +1,8 @@
 # dotfiles
 My precious, litte dotfiles. Arch + Bspwm + Zsh (Prezto) etc, managed with pain.
 
+![Desktop](.github/background.png)
+
 # How to use
 1. Install the programs you want
 2. Clone the repo

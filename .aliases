@@ -54,7 +54,9 @@ loc() {
   local firstletter
   local ext
   local lines
+  
   total=0
+
   for ext in $@; do
     firstletter=$(echo $ext | cut -c1-1)
     if [[ firstletter != "." ]]; then

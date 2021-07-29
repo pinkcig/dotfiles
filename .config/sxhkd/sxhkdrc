@@ -16,7 +16,7 @@ super + d
 super + ctrl + d
 	rofi -modi drun -show window -line-padding 4 \
                 -columns 2 -padding 50 -hide-scrollbar \
-		-font "Droid Sans Regular 10"
+				-font "Droid Sans Regular 10"
 
 # power-menu 
 super + shift + e
@@ -160,10 +160,10 @@ XF86MonBrightnessDown
 
 # Screenshot
 Print
-  scrot ~/Pictures/Screenshot-$(date +%F_%T).png
+  flamescript
 
 super+Print
-  ~/.config/bspwm/modules/screenshot.sh
+  flamescript
 
 # Shortcuts
 super + w 

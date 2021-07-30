@@ -5,6 +5,19 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
+append_path () {
+    case ":$PATH:" in
+        *:"$1":*)
+            ;;
+        *)
+            PATH="${PATH:+$PATH:}$1"
+    esac
+}
+
+append_path "$HOME/.bin"
+
+export PATH
+
 if [ -f $sysresources ]; then
     xrdb -merge $sysresources
 fi
@@ -28,11 +41,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-nitrogen --restore 		&
-picom 				&
-$HOME/.config/polybar/launch.sh	&
-sxhkd				& 	
-dunst				& 	
-flameshot			&
-fix-delay			&
+picom 									&
+$HOME/.config/polybar/launch.sh						&
+sxhkd									& 	
+dunst									& 	
+wal -i $HOME/.local/share/wallpapers/51760_serial_experiments_lain.jpg 	&
+
 exec bspwm 	
+

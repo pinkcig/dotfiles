@@ -25,3 +25,5 @@ source ~/.aliases
 # Customize to your needs...
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+export DEVKITPRO=/opt/devkitpro
+export DEVKITARM=/opt/devkitpro/devkitARM

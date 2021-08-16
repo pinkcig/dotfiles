@@ -24,6 +24,7 @@ bspc config gapless_monocle      true
 
 bspc config focus_follows_pointer true
 
-bspc rule -a firefox desktop='^2'
 
+bspc rule -a firefox desktop='^2'
+bspc rule -a spotify desktop='^10'
 

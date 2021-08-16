@@ -15,6 +15,7 @@ append_path () {
 }
 
 append_path "$HOME/.bin"
+append_path "$HOME/go/bin"
 
 export PATH
 

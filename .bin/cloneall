@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir $1 && cd $1
+for i in `curl   -s https://api.github.com/orgs/$1/repos?per_page=200 | grep html_url | awk 'NR%2 == 0' |cut -d ':' -f 2-3 | tr -d '",'`; do
+	git clone $i.git;
+done

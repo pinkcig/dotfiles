@@ -11,7 +11,7 @@ alias mkdir='mkdir -pv'
 alias mkcd="mkdir $1 && cd $1"
 alias ping='ping -c 5'
 alias yst="yarn run start"
-
+alias wlist="nmcli dev wifi rescan && nmcli dev wifi list"
 
 # Replacing cat to bat
 alias cat='bat'
